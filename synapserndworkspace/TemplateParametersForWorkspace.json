@@ -1,0 +1,69 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "synapserndworkspace"
+		},
+		"SqlServer1_connectionString": {
+			"value": ""
+		},
+		"ls_adls2_accountKey": {
+			"value": ""
+		},
+		"ls_blob_connect_external_accountKey": {
+			"value": ""
+		},
+		"ls_sql_external_connectionString": {
+			"value": ""
+		},
+		"synapserndworkspace-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapserndworkspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_server": {
+			"value": "synapserndworkspace.sql.azuresynapse.net"
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_database": {
+			"value": "rtc_dedicated_2"
+		},
+		"AzureSynapseAnalytics2_properties_typeProperties_server": {
+			"value": "synapserndworkspace.sql.azuresynapse.net"
+		},
+		"AzureSynapseAnalytics2_properties_typeProperties_database": {
+			"value": "rtc_dedicated_2"
+		},
+		"AzureSynapseAnalytics3_properties_typeProperties_server": {
+			"value": "synapserndworkspace.sql.azuresynapse.net"
+		},
+		"AzureSynapseAnalytics3_properties_typeProperties_database": {
+			"value": "rtc_dedicated_2"
+		},
+		"AzureSynapseAnalytics_ravi_goklani_properties_typeProperties_server": {
+			"value": "synapserndworkspace.sql.azuresynapse.net"
+		},
+		"AzureSynapseAnalytics_ravi_goklani_properties_typeProperties_database": {
+			"value": "rtc_dedicated_2"
+		},
+		"ls_adls2_properties_typeProperties_url": {
+			"value": "https://testbzsynapse.dfs.core.windows.net/"
+		},
+		"ls_blob_connect_external_properties_typeProperties_url": {
+			"value": "https://testbzsynapse.dfs.core.windows.net/"
+		},
+		"ls_synapse_testdb_properties_typeProperties_server": {
+			"value": "synapserndworkspace.sql.azuresynapse.net"
+		},
+		"ls_synapse_testdb_properties_typeProperties_database": {
+			"value": "rtc_dedicated_2"
+		},
+		"synapserndworkspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://dairndadlsgen2.dfs.core.windows.net"
+		},
+		"test_db_properties_typeProperties_server": {
+			"value": "synapserndworkspace.sql.azuresynapse.net"
+		},
+		"test_db_properties_typeProperties_database": {
+			"value": "rtc_dedicated_2"
+		}
+	}
+}
