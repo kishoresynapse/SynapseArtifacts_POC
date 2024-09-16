@@ -1,0 +1,23 @@
+{
+	"name": "AzureSynapseAnalytics2",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDW",
+		"typeProperties": {
+			"server": "synapserndworkspace.sql.azuresynapse.net",
+			"database": "rtc_dedicated_2",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "UserAssignedManagedIdentity",
+			"credential": {
+				"referenceName": "creds_data_model",
+				"type": "CredentialReference"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

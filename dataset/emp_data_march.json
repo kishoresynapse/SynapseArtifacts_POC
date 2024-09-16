@@ -1,0 +1,17 @@
+{
+	"name": "emp_data_march",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "emp_data_march"
+		},
+		"sqlPool": {
+			"referenceName": "rtc_dedicated_2",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

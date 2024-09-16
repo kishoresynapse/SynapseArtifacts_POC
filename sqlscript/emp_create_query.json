@@ -1,0 +1,17 @@
+{
+	"name": "emp_create_query",
+	"properties": {
+		"content": {
+			"query": "CREATE TABLE emp_data_march (\n    Series_reference VARCHAR(20),\n    Period VARCHAR(10),\n    Data_value DECIMAL(18, 2),\n    Suppressed VARCHAR(3),\n    STATUS VARCHAR(10),\n    UNITS VARCHAR(10),\n    Magnitude INT,\n    Subject VARCHAR(50),\n    Groupname CHAR(1),\n    Series_title_1 VARCHAR(50),\n    Series_title_2 VARCHAR(50),\n    Series_title_3 VARCHAR(50),\n    Series_title_4 VARCHAR(50),\n    Series_title_5 VARCHAR(50)\n);\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "rtc_dedicated_2",
+				"poolName": "rtc_dedicated_2"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"content": {
+			"query": "\n ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "rtc_dedicated_2",
+				"poolName": "rtc_dedicated_2"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

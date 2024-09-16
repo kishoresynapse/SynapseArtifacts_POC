@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 4",
+	"properties": {
+		"content": {
+			"query": "--dummy",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "rtc_dedicated_2",
+				"poolName": "rtc_dedicated_2"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

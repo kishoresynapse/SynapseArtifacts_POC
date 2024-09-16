@@ -1,0 +1,25 @@
+{
+	"name": "delta",
+	"properties": {
+		"Name": "delta",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://dairndfilesys@dairndadlsgen2.dfs.core.windows.net/delta",
+			"Properties": {
+				"FormatType": "csv",
+				"LinkedServiceName": "synapserndworkspace-WorkspaceDefaultStorage"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 2,
+		"ObjectId": "80e55359-c715-48d5-9c7e-2df5e64d9754"
+	},
+	"type": "DATABASE"
+}

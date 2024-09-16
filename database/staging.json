@@ -1,0 +1,25 @@
+{
+	"name": "staging",
+	"properties": {
+		"Name": "staging",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://dairndfilesys@dairndadlsgen2.dfs.core.windows.net/staging",
+			"Properties": {
+				"FormatType": "csv",
+				"LinkedServiceName": "synapserndworkspace-WorkspaceDefaultStorage"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 2,
+		"ObjectId": "e79d5a13-6e50-413d-9a67-7d9586d403c6"
+	},
+	"type": "DATABASE"
+}
