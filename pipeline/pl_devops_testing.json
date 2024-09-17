@@ -183,12 +183,6 @@
 						"referenceName": "ds_rndcontainer_src",
 						"type": "DatasetReference"
 					}
-				],
-				"outputs": [
-					{
-						"referenceName": "emp_data_march",
-						"type": "DatasetReference"
-					}
 				]
 			}
 		],
