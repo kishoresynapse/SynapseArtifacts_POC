@@ -3,29 +3,12 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Script_test_db",
-				"type": "Script",
+				"name": "Wait1",
+				"type": "Wait",
 				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
-				"linkedServiceName": {
-					"referenceName": "test_db",
-					"type": "LinkedServiceReference"
-				},
 				"typeProperties": {
-					"scripts": [
-						{
-							"type": "Query",
-							"text": "select * from dbo.test_table"
-						}
-					],
-					"scriptBlockExecutionTimeout": "02:00:00"
+					"waitTimeInSeconds": 1
 				}
 			}
 		],
