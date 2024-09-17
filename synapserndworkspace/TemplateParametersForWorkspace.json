@@ -14,6 +14,12 @@
 		"synapserndworkspace-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapserndworkspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
+		"azure_sql_linkConnection_connectionString": {
+			"value": ""
+		},
+		"SqlServer1_connectionString": {
+			"value": ""
+		},
 		"ls_adls2_properties_typeProperties_url": {
 			"value": "https://testbzsynapse.dfs.core.windows.net/"
 		},
