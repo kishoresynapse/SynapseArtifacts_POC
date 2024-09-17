@@ -14,17 +14,8 @@
 		"ls_blob_connect_external_accountKey": {
 			"value": ""
 		},
-		"ls_sql_external_connectionString": {
-			"value": ""
-		},
 		"synapserndworkspace-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapserndworkspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
-		"AzureSynapseAnalytics1_properties_typeProperties_server": {
-			"value": "synapserndworkspace.sql.azuresynapse.net"
-		},
-		"AzureSynapseAnalytics1_properties_typeProperties_database": {
-			"value": "rtc_dedicated_2"
 		},
 		"AzureSynapseAnalytics2_properties_typeProperties_server": {
 			"value": "synapserndworkspace.sql.azuresynapse.net"
@@ -58,12 +49,6 @@
 		},
 		"synapserndworkspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"value": "https://dairndadlsgen2.dfs.core.windows.net"
-		},
-		"test_db_properties_typeProperties_server": {
-			"value": "synapserndworkspace.sql.azuresynapse.net"
-		},
-		"test_db_properties_typeProperties_database": {
-			"value": "rtc_dedicated_2"
 		}
 	}
 }

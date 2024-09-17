@@ -19,22 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_blob_connect_external'"
 		},
-		"ls_sql_external_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ls_sql_external'"
-		},
 		"synapserndworkspace-WorkspaceDefaultSqlServer_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'synapserndworkspace-WorkspaceDefaultSqlServer'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapserndworkspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
-		"AzureSynapseAnalytics1_properties_typeProperties_server": {
-			"type": "string",
-			"defaultValue": "synapserndworkspace.sql.azuresynapse.net"
-		},
-		"AzureSynapseAnalytics1_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "rtc_dedicated_2"
 		},
 		"AzureSynapseAnalytics2_properties_typeProperties_server": {
 			"type": "string",
@@ -79,14 +67,6 @@
 		"synapserndworkspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://dairndadlsgen2.dfs.core.windows.net"
-		},
-		"test_db_properties_typeProperties_server": {
-			"type": "string",
-			"defaultValue": "synapserndworkspace.sql.azuresynapse.net"
-		},
-		"test_db_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "rtc_dedicated_2"
 		}
 	},
 	"variables": {
@@ -194,29 +174,12 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Script_test_db",
-						"type": "Script",
+						"name": "Wait1",
+						"type": "Wait",
 						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
 						"userProperties": [],
-						"linkedServiceName": {
-							"referenceName": "test_db",
-							"type": "LinkedServiceReference"
-						},
 						"typeProperties": {
-							"scripts": [
-								{
-									"type": "Query",
-									"text": "select * from dbo.test_table"
-								}
-							],
-							"scriptBlockExecutionTimeout": "02:00:00"
+							"waitTimeInSeconds": 1
 						}
 					}
 				],
@@ -226,9 +189,7 @@
 				"annotations": [],
 				"lastPublishTime": "2024-07-10T02:49:50Z"
 			},
-			"dependsOn": [
-				"[concat(variables('workspaceId'), '/linkedServices/test_db')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('workspaceName'), '/DestinationDataset_gv4')]",
@@ -396,34 +357,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/AzureSynapseAnalytics1')]",
-			"type": "Microsoft.Synapse/workspaces/linkedServices",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"server": "[parameters('AzureSynapseAnalytics1_properties_typeProperties_server')]",
-					"database": "[parameters('AzureSynapseAnalytics1_properties_typeProperties_database')]",
-					"encrypt": "mandatory",
-					"trustServerCertificate": false,
-					"authenticationType": "UserAssignedManagedIdentity",
-					"credential": {
-						"referenceName": "usr-assigned-mi",
-						"type": "CredentialReference"
-					}
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]",
-				"[concat(variables('workspaceId'), '/credentials/usr-assigned-mi')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('workspaceName'), '/AzureSynapseAnalytics2')]",
 			"type": "Microsoft.Synapse/workspaces/linkedServices",
 			"apiVersion": "2019-06-01-preview",
@@ -563,30 +496,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/ls_sql_external')]",
-			"type": "Microsoft.Synapse/workspaces/linkedServices",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"parameters": {
-					"env": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"connectionString": "[parameters('ls_sql_external_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('workspaceName'), '/ls_synapse_testdb')]",
 			"type": "Microsoft.Synapse/workspaces/linkedServices",
 			"apiVersion": "2019-06-01-preview",
@@ -650,34 +559,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/test_db')]",
-			"type": "Microsoft.Synapse/workspaces/linkedServices",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"server": "[parameters('test_db_properties_typeProperties_server')]",
-					"database": "[parameters('test_db_properties_typeProperties_database')]",
-					"encrypt": "mandatory",
-					"trustServerCertificate": false,
-					"authenticationType": "UserAssignedManagedIdentity",
-					"credential": {
-						"referenceName": "test_db_creds",
-						"type": "CredentialReference"
-					}
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]",
-				"[concat(variables('workspaceId'), '/credentials/test_db_creds')]"
 			]
 		},
 		{
@@ -869,31 +750,7 @@
 			"properties": {
 				"type": "ManagedIdentity",
 				"typeProperties": {
-					"resourceId": "/subscriptions/85daead2-a68a-4f66-9432-4b2decfc8822/resourceGroups/DAI-RnD-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-datamodelling"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/test_db_creds')]",
-			"type": "Microsoft.Synapse/workspaces/credentials",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"type": "ManagedIdentity",
-				"typeProperties": {
-					"resourceId": "/subscriptions/85daead2-a68a-4f66-9432-4b2decfc8822/resourcegroups/DAI-RnD-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user_managed_synapse"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/usr-assigned-mi')]",
-			"type": "Microsoft.Synapse/workspaces/credentials",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"type": "ManagedIdentity",
-				"typeProperties": {
-					"resourceId": "/subscriptions/85daead2-a68a-4f66-9432-4b2decfc8822/resourcegroups/DAI-RnD-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-ls-syn-sql"
+					"resourceId": "/subscriptions/85daead2-a68a-4f66-9432-4b2decfc8822/resourcegroups/DAI-RnD-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-datamodelling"
 				}
 			},
 			"dependsOn": []
@@ -910,106 +767,6 @@
 					},
 					"currentConnection": {
 						"databaseName": "master",
-						"poolName": "rtc_dedicated_2"
-					},
-					"resultLimit": 5000
-				},
-				"type": "SqlQuery"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/SQL script 1')]",
-			"type": "Microsoft.Synapse/workspaces/sqlscripts",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"content": {
-					"query": "-- This is auto-generated code\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://dairndadlsgen2.dfs.core.windows.net/dairndfilesys/userdata1.parquet',\n        FORMAT = 'PARQUET'\n    ) AS [result]\n",
-					"metadata": {
-						"language": "sql"
-					},
-					"currentConnection": {
-						"databaseName": "master",
-						"poolName": "Built-in"
-					},
-					"resultLimit": 5000
-				},
-				"type": "SqlQuery"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/SQL script 2')]",
-			"type": "Microsoft.Synapse/workspaces/sqlscripts",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"content": {
-					"query": "SELECT DISTINCT pr.principal_id, pr.name AS [UserName], pr.type_desc AS [User_or_Role], pr.authentication_type_desc AS [Auth_Type], pe.state_desc,\n  pe.permission_name, pe.class_desc, o.[name] AS 'Object'FROM sys.database_principals AS pr \n    JOIN sys.database_permissions AS pe ON pe.grantee_principal_id = pr.principal_id\n    LEFT JOIN sys.objects AS o on (o.object_id = pe.major_id);\n\nselect * from dbo.emp_data_march;\n\nCREATE TABLE dbo.test_table\n  (  \n   id int NOT NULL,  \n   lastName varchar(20),  \n   zipCode varchar(6)  \n  ) ;\n\n  insert into dbo.test_table values (1,'rer','errt');\n\n  select * from dbo.test_table;\n\nselect * from dbo.test_table_new;\n\n  create table dbo.test_table_new WITH\n(\n DISTRIBUTION = ROUND_ROBIN\n ,CLUSTERED COLUMNSTORE INDEX\n) as select * from dbo.test_table;\n\nGRANT SELECT ON SCHEMA::dbo TO [user_managed_synapse];\n\nSELECT \n    DP1.name AS DatabaseRoleName\n    ,ISNULL(DP2.name, 'No members') AS DatabaseUserName\n    ,DP2.principal_id\n    ,DP2.create_date\nFROM sys.database_role_members AS DRM  \nRIGHT OUTER JOIN sys.database_principals AS DP1 ON DRM.role_principal_id = DP1.principal_id  \nLEFT OUTER JOIN sys.database_principals AS DP2  ON DRM.member_principal_id = DP2.principal_id  \n--WHERE DP1.type = 'R'\nORDER BY DP1.name, ISNULL(DP2.name, 'No members');\n\n\n\ncreate user [mi-datamodelling] from external provider;\ncreate role role_bz_test_table_access;\ngrant select on object::test_table to [role_bz_test_table_access];\nexec sp_addrolemember 'role_bz_test_table_access','mi-datamodelling';\n\nexec sp_droprolemember 'data_readers','vishwanath.prajapati@blazeclan.com';\ndrop role data_readers;\ndrop user [ravi.goklani@blazeclan.com];\n\n\nexec sp_droprolemember 'db_datareader','eytham.kishore@blazeclan.com';\n\nselect  princ.name\n,       princ.type_desc\n,       perm.permission_name\n,       perm.state_desc\n,       perm.class_desc\n,       object_name(perm.major_id)\nfrom    sys.database_principals princ\nleft join\n        sys.database_permissions perm\non      perm.grantee_principal_id = princ.principal_id\n",
-					"metadata": {
-						"language": "sql"
-					},
-					"currentConnection": {
-						"databaseName": "rtc_dedicated_2",
-						"poolName": "rtc_dedicated_2"
-					},
-					"resultLimit": 5000
-				},
-				"type": "SqlQuery"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/SQL script 3')]",
-			"type": "Microsoft.Synapse/workspaces/sqlscripts",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"content": {
-					"query": "\n ",
-					"metadata": {
-						"language": "sql"
-					},
-					"currentConnection": {
-						"databaseName": "rtc_dedicated_2",
-						"poolName": "rtc_dedicated_2"
-					},
-					"resultLimit": 5000
-				},
-				"type": "SqlQuery"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/SQL script 4')]",
-			"type": "Microsoft.Synapse/workspaces/sqlscripts",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"content": {
-					"query": "--dummy",
-					"metadata": {
-						"language": "sql"
-					},
-					"currentConnection": {
-						"databaseName": "rtc_dedicated_2",
-						"poolName": "rtc_dedicated_2"
-					},
-					"resultLimit": 5000
-				},
-				"type": "SqlQuery"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/emp_create_query')]",
-			"type": "Microsoft.Synapse/workspaces/sqlscripts",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"content": {
-					"query": "CREATE TABLE emp_data_march (\n    Series_reference VARCHAR(20),\n    Period VARCHAR(10),\n    Data_value DECIMAL(18, 2),\n    Suppressed VARCHAR(3),\n    STATUS VARCHAR(10),\n    UNITS VARCHAR(10),\n    Magnitude INT,\n    Subject VARCHAR(50),\n    Groupname CHAR(1),\n    Series_title_1 VARCHAR(50),\n    Series_title_2 VARCHAR(50),\n    Series_title_3 VARCHAR(50),\n    Series_title_4 VARCHAR(50),\n    Series_title_5 VARCHAR(50)\n);\n",
-					"metadata": {
-						"language": "sql"
-					},
-					"currentConnection": {
-						"databaseName": "rtc_dedicated_2",
 						"poolName": "rtc_dedicated_2"
 					},
 					"resultLimit": 5000
