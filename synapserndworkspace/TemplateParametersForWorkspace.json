@@ -5,9 +5,6 @@
 		"workspaceName": {
 			"value": "synapserndworkspace"
 		},
-		"SqlServer1_connectionString": {
-			"value": ""
-		},
 		"ls_adls2_accountKey": {
 			"value": ""
 		},
@@ -16,24 +13,6 @@
 		},
 		"synapserndworkspace-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapserndworkspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
-		"AzureSynapseAnalytics2_properties_typeProperties_server": {
-			"value": "synapserndworkspace.sql.azuresynapse.net"
-		},
-		"AzureSynapseAnalytics2_properties_typeProperties_database": {
-			"value": "rtc_dedicated_2"
-		},
-		"AzureSynapseAnalytics3_properties_typeProperties_server": {
-			"value": "synapserndworkspace.sql.azuresynapse.net"
-		},
-		"AzureSynapseAnalytics3_properties_typeProperties_database": {
-			"value": "rtc_dedicated_2"
-		},
-		"AzureSynapseAnalytics_ravi_goklani_properties_typeProperties_server": {
-			"value": "synapserndworkspace.sql.azuresynapse.net"
-		},
-		"AzureSynapseAnalytics_ravi_goklani_properties_typeProperties_database": {
-			"value": "rtc_dedicated_2"
 		},
 		"ls_adls2_properties_typeProperties_url": {
 			"value": "https://testbzsynapse.dfs.core.windows.net/"
