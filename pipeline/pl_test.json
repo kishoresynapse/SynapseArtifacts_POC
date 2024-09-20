@@ -14,7 +14,7 @@
 			},
 			{
 				"name": "s",
-				"description": "zzqq",
+				"description": "a",
 				"type": "Wait",
 				"dependsOn": [],
 				"userProperties": [],
