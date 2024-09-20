@@ -14,7 +14,7 @@
 			},
 			{
 				"name": "s",
-				"description": "a",
+				"description": "hello",
 				"type": "Wait",
 				"dependsOn": [],
 				"userProperties": [],
