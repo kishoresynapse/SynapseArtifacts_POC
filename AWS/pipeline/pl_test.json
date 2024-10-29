@@ -4,27 +4,7 @@
 		"activities": [
 			{
 				"name": "Wait1",
-				"description": "zzqq",
-				"type": "Wait",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"waitTimeInSeconds": 1
-				}
-			},
-			{
-				"name": "s",
-				"description": "hello",
-				"type": "Wait",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"waitTimeInSeconds": 1
-				}
-			},
-			{
-				"name": "s_copy1",
-				"description": "hello",
+				"description": "hvjgvjh",
 				"type": "Wait",
 				"dependsOn": [],
 				"userProperties": [],
@@ -34,7 +14,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2024-07-10T02:49:50Z"
+		"lastPublishTime": "2024-09-20T05:07:15Z"
 	},
 	"type": "Microsoft.Synapse/workspaces/pipelines"
 }
