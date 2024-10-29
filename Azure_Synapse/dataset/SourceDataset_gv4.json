@@ -1,0 +1,22 @@
+{
+	"name": "SourceDataset_gv4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "synapse"
+			},
+			"compression": {
+				"type": "bzip2"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

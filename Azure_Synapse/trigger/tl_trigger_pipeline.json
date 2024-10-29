@@ -1,0 +1,29 @@
+{
+	"name": "tl_trigger_pipeline",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_test",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Month",
+				"interval": 1,
+				"startTime": "2024-09-16T09:46:00",
+				"timeZone": "India Standard Time",
+				"schedule": {
+					"monthDays": [
+						3
+					]
+				}
+			}
+		}
+	}
+}
