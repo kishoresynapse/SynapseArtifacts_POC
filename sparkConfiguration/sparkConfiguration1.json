@@ -1,0 +1,15 @@
+{
+	"name": "sparkConfiguration1",
+	"properties": {
+		"description": "spark configuration for testing purpose",
+		"configs": {
+			"spark.blacklist.enabled": "0"
+		},
+		"created": "2024-09-16T09:58:48.912Z",
+		"createdBy": "eytham.kishore@blazeclan.com",
+		"annotations": [],
+		"configMergeRule": {
+			"artifact.currentOperation.spark.blacklist.enabled": "replace"
+		}
+	}
+}

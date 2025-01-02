@@ -1,0 +1,65 @@
+{
+	"name": "rnd_notebook",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "rndsparkpool",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "5e4a36e9-3681-468a-adf4-67e97ea142a1"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/85daead2-a68a-4f66-9432-4b2decfc8822/resourceGroups/DAI-RnD-RG/providers/Microsoft.Synapse/workspaces/synapserndworkspace/bigDataPools/rndsparkpool",
+				"name": "rndsparkpool",
+				"type": "Spark",
+				"endpoint": "https://synapserndworkspace.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/rndsparkpool",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.3",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"%%pyspark\r\n",
+					"df = spark.read.load('abfss://rndcontainer@dairndadlsgen2.dfs.core.windows.net/pipeline_source/machine-readable-business-employment-data-mar-2024-quarter.csv', format='csv'\r\n",
+					"## If header exists uncomment line below\r\n",
+					"##, header=True\r\n",
+					")\r\n",
+					"display(df.limit(10))"
+				]
+			}
+		]
+	}
+}
