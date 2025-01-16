@@ -28,22 +28,6 @@
 				"typeProperties": {
 					"waitTimeInSeconds": 1
 				}
-			},
-			{
-				"name": "Wait2",
-				"type": "Wait",
-				"dependsOn": [
-					{
-						"activity": "deploying",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"waitTimeInSeconds": 1
-				}
 			}
 		],
 		"annotations": [],
