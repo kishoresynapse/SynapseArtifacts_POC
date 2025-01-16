@@ -46,7 +46,7 @@
 				}
 			},
 			{
-				"name": "Wait2_copy1",
+				"name": "Wait3",
 				"type": "Wait",
 				"dependsOn": [
 					{
